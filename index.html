@@ -10,13 +10,24 @@
             font-family: 'Poppins', sans-serif;
             background-color: #ffe6e6;
             text-align: center;
-            padding: 10px;
+            padding: 50px;
             color: #ff0066;
             position: relative;
             overflow: hidden;
-            margin: 0;
         }
-        
+
+        /* Ajustes para iPhone */
+        @media only screen and (max-width: 600px) {
+            .photo {
+                width: 80px;
+                height: 80px;
+            }
+            .note {
+                font-size: 1em;
+                padding: 8px 16px;
+            }
+        }
+
         /* New heart background animation */
         .heart-background {
             position: fixed;
@@ -93,7 +104,7 @@
 
         .floating {
             position: absolute;
-            font-size: 24px;
+            font-size: 18px;
             animation: float 5s linear infinite;
             opacity: 0.7;
         }
@@ -105,30 +116,13 @@
 
         .photo {
             position: absolute;
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 10px;
             opacity: 0.8;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
             object-fit: cover;
             z-index: 10;
-        }
-
-        @media screen and (max-width: 600px) {
-            h1 {
-                font-size: 2em;
-            }
-            p {
-                font-size: 1em;
-            }
-            .button {
-                font-size: 1em;
-                padding: 12px 24px;
-            }
-            .photo {
-                width: 60px;
-                height: 60px;
-            }
         }
 
         /* Notitas flotantes */
@@ -168,10 +162,9 @@
     <p>¿Quieres ser mi San Valentín este 14 de febrero y por todos los que sigan durante muchos años? 💕</p>
     <a href="carta.html" class="button">¡Sí, claro! 💘</a>
 
-
     <img src="https://i.imgur.com/yhUnAwr.jpg" class="photo" style="top: 5%; left: 5%;"> 
     <img src="https://i.imgur.com/g3ATYh3.jpg" class="photo" style="top: 25%; right: 15%;">
-    <img src="https://i.imgur.com/2FRejXM.jpg" class="photo" style="bottom:-25%; left: 46%;"> 
+    <img src="https://i.imgur.com/2FRejXM.jpg" class="photo" style="bottom:-25%; left: 46%;">
 
     <script>
         function createFloatingElement(symbol) {
