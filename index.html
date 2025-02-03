@@ -10,10 +10,11 @@
             font-family: 'Poppins', sans-serif;
             background-color: #ffe6e6;
             text-align: center;
-            padding: 50px;
+            padding: 10px;
             color: #ff0066;
             position: relative;
             overflow: hidden;
+            margin: 0;
         }
         
         /* New heart background animation */
@@ -49,7 +50,7 @@
         }
 
         h1 {
-            font-size: 3em;
+            font-size: 2.5em;
             margin-bottom: 20px;
             text-shadow: 2px 2px 5px rgba(255, 0, 102, 0.5);
             font-weight: 600;
@@ -57,7 +58,7 @@
             z-index: 10;
         }
         p {
-            font-size: 1.5em;
+            font-size: 1.2em;
             margin-bottom: 30px;
             font-weight: 300;
             position: relative;
@@ -104,13 +105,30 @@
 
         .photo {
             position: absolute;
-            width: 120px;
-            height: 120px;
+            width: 80px;
+            height: 80px;
             border-radius: 10px;
             opacity: 0.8;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
             object-fit: cover;
             z-index: 10;
+        }
+
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .button {
+                font-size: 1em;
+                padding: 12px 24px;
+            }
+            .photo {
+                width: 60px;
+                height: 60px;
+            }
         }
 
         /* Notitas flotantes */
@@ -153,7 +171,7 @@
 
     <img src="https://i.imgur.com/yhUnAwr.jpg" class="photo" style="top: 5%; left: 5%;"> 
     <img src="https://i.imgur.com/g3ATYh3.jpg" class="photo" style="top: 25%; right: 15%;">
-    <img src="https://i.imgur.com/2FRejXM.jpg" class="photo" style="bottom:-25%; left: 46%;">
+    <img src="https://i.imgur.com/2FRejXM.jpg" class="photo" style="bottom:-25%; left: 46%;"> 
 
     <script>
         function createFloatingElement(symbol) {
@@ -243,4 +261,4 @@
     </script>
 
 </body>
-</html> 
+</html>
