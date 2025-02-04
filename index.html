@@ -28,8 +28,8 @@
 
         .heart {
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 15px;
+            height: 15px;
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff0066" fill-opacity="0.3"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center center;
             background-size: contain;
             opacity: 0.6;
@@ -39,6 +39,24 @@
         @keyframes fall {
             0% { transform: translateY(-100%) rotate(0deg); opacity: 0.6; }
             100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .heart:nth-child(odd) {
+            left: calc(50% - 100px);
+            animation-duration: 10s;
+            animation-delay: -5s;
+        }
+
+        .heart:nth-child(even) {
+            left: calc(50% + 100px);
+            animation-duration: 12s;
+            animation-delay: -3s;
+        }
+
+        .heart:nth-child(3n) {
+            left: calc(50% + 50px);
+            animation-duration: 9s;
+            animation-delay: -7s;
         }
 
         @media only screen and (max-width: 600px) {
@@ -65,43 +83,53 @@
             font-weight: 400;
             display: inline-block;
         }
+
         .button:hover {
             background-color: #ff3399;
             transform: scale(1.05);
         }
+
+        .heart-background {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        
+        .heart:nth-child(odd) {
+            animation: fall-left-to-right linear infinite;
+        }
+
+        @keyframes fall-left-to-right {
+            0% { left: calc(50% - 100px); opacity: 0.7; }
+            100% { left: calc(50% + 100px); opacity: 0; }
+        }
+
     </style>
 </head>
 <body>
-    <div class="heart-background" id="heart-background"></div>
-    
+    <div class="heart-background" id="heart-background">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <!-- Aquí puedes agregar más corazones si deseas -->
+    </div>
+
     <h1>¡Hola, mi princesa! 💖</h1>
     <p>Quiero preguntarte algo especial...</p>
     <p>¿Quieres ser mi San Valentín este 14 de febrero y por todos los que sigan durante muchos años? 💕</p>
     <a href="carta.html" class="button">¡Sí, claro! 💘</a>
 
-    <img src="https://i.imgur.com/yhUnAwr.jpg" class="photo";rigth 20%" > 
-    <img src="https://i.imgur.com/g3ATYh3.jpg" class="photo";rigth 20%" >
-    <img src="https://i.imgur.com/2FRejXM.jpg" class="photo";rigth 20%" >
+    <img src="https://i.imgur.com/yhUnAwr.jpg" class="photo">
+    <img src="https://i.imgur.com/g3ATYh3.jpg" class="photo">
+    <img src="https://i.imgur.com/2FRejXM.jpg" class="photo">
 
-    <script>
-        function createHeartBackground() {
-            const background = document.getElementById('heart-background');
-            const heartCount = 50;
-
-            for (let i = 0; i < heartCount; i++) {
-                const heart = document.createElement('div');
-                heart.classList.add('heart');
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.width = (Math.random() * 30 + 10) + 'px';
-                heart.style.height = heart.style.width;
-                heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
-                heart.style.animationDelay = Math.random() * -10 + 's';
-                background.appendChild(heart);
-            }
-        }
-
-        createHeartBackground();
-    </script>
 </body>
 </html>
 
