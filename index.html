@@ -6,6 +6,7 @@
     <title>¿Quieres ser mi San Valentín?</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        /* Estilos Generales */
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #ffe6e6;
@@ -14,50 +15,6 @@
             color: #ff0066;
             position: relative;
             overflow: hidden;
-        }
-
-        /* Ajustes para iPhone */
-        @media only screen and (max-width: 600px) {
-            .photo {
-                width: 80px;
-                height: 80px;
-            }
-            .note {
-                font-size: 1em;
-                padding: 8px 16px;
-            }
-        }
-
-        /* Nueva animación de fondo de corazón */
-        .heart-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff0066" fill-opacity="0.3"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center center;
-            background-size: contain;
-            opacity: 0.6;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(-100%) rotate(0deg);
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
         }
 
         h1 {
@@ -99,16 +56,36 @@
             transform: scale(1.05);
         }
 
+        /* Animaciones de fondo y elementos flotantes */
         @keyframes glow {
-            0% {
-                box-shadow: 0 0 10px rgba(255, 0, 102, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 20px rgba(255, 0, 102, 0.8);
-            }
-            100% {
-                box-shadow: 0 0 10px rgba(255, 0, 102, 0.5);
-            }
+            0% { box-shadow: 0 0 10px rgba(255, 0, 102, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(255, 0, 102, 0.8); }
+            100% { box-shadow: 0 0 10px rgba(255, 0, 102, 0.5); }
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100%) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .heart-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff0066" fill-opacity="0.3"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center center;
+            background-size: contain;
+            opacity: 0.6;
+            animation: fall linear infinite;
         }
 
         .floating {
@@ -119,19 +96,12 @@
         }
 
         @keyframes float {
-            0% {
-                transform: translateY(100vh) scale(1);
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-10vh) scale(1.5);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) scale(1); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
         }
 
+        /* Estilos para las imágenes */
         .photo {
             position: absolute;
             width: 100px;
@@ -143,7 +113,7 @@
             z-index: 10;
         }
 
-        /* Notitas flotantes */
+        /* Estilos de las notas flotantes */
         .note {
             position: absolute;
             background-color: #fff7f7;
@@ -159,53 +129,62 @@
         }
 
         @keyframes floatNote {
-            0% {
-                transform: translateY(100vh) scale(0.8);
-                opacity: 0;
+            0% { transform: translateY(100vh) scale(0.8); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+
+        /* Ajustes para dispositivos móviles */
+        @media only screen and (max-width: 600px) {
+            .photo {
+                width: 80px;
+                height: 80px;
             }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-10vh) scale(1.2);
-                opacity: 0;
+
+            .note {
+                font-size: 1em;
+                padding: 8px 16px;
             }
         }
 
     </style>
 </head>
 <body>
+
+    <!-- Fondo de corazones flotantes -->
     <div class="heart-background" id="heart-background"></div>
 
+    <!-- Música de fondo -->
     <audio autoplay loop>
         <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
     </audio>
 
+    <!-- Contenido principal -->
     <h1>¡Hola, mi princesa! 💖</h1>
     <p>Quiero preguntarte algo especial...</p>
     <p>¿Quieres ser mi San Valentín este 14 de febrero y por todos los que sigan durante muchos años? 💕</p>
     <a href="carta.html" class="button">¡Sí, claro! 💘</a>
 
-    <img src="https://i.imgur.com/yhUnAwr.jpg" class="photo" style="top: 5%; left: 7%; bottom: 12%;">
+    <!-- Imágenes -->
+    <img src="https://i.imgur.com/yhUnAwr.jpg" class="photo" style="top: 5%; left: 7%;">
     <img src="https://i.imgur.com/g3ATYh3.jpg" class="photo" style="top: 25%; right: 15%;">
     <img src="https://i.imgur.com/2FRejXM.jpg" class="photo" style="bottom: -25%; left: 46%;">
 
     <script>
+        /* Funciones para generar elementos flotantes */
         function createFloatingElement(symbol) {
             const element = document.createElement("div");
             element.innerHTML = symbol;
             element.classList.add("floating");
             document.body.appendChild(element);
-            const size = Math.random() * 20 + 20 + "px";
+
+            const size = Math.random() * 20 + 20 + "px"; 
             element.style.fontSize = size;
             element.style.left = Math.random() * 100 + "vw";
             element.style.animationDuration = Math.random() * 3 + 3 + "s";
-            setTimeout(() => {
-                element.remove();
-            }, 5000);
+
+            setTimeout(() => { element.remove(); }, 5000);
         }
 
         function createFloatingNote(text, position) {
@@ -216,54 +195,54 @@
 
             // Separar las notas en mitades de pantalla
             if (position === "left") {
-                note.style.left = Math.random() * 40 + 5 + "vw";
+                note.style.left = Math.random() * 40 + 5 + "vw"; 
             } else {
-                note.style.left = Math.random() * 40 + 50 + "vw";
+                note.style.left = Math.random() * 40 + 50 + "vw"; 
             }
+            
             note.style.top = Math.random() * 50 + 20 + "vh";
             note.style.animationDuration = Math.random() * 5 + 5 + "s";
-            setTimeout(() => {
-                note.remove();
-            }, 8000);
+
+            setTimeout(() => { note.remove(); }, 8000);
         }
 
-        // Función para crear un fondo de corazones que caen
+        /* Generación de corazones de fondo */
         function createHeartBackground() {
             const background = document.getElementById('heart-background');
-            const heartCount = 50; // Número de corazones
+            const heartCount = 50; 
+
             for (let i = 0; i < heartCount; i++) {
                 const heart = document.createElement('div');
                 heart.classList.add('heart');
-                // Aleatoriza la posición, el tamaño y la duración de la caída
                 heart.style.left = Math.random() * 100 + 'vw';
                 heart.style.width = (Math.random() * 30 + 10) + 'px';
                 heart.style.height = heart.style.width;
                 heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
                 heart.style.animationDelay = Math.random() * -10 + 's';
+
                 background.appendChild(heart);
             }
         }
 
-        // Genera corazones que caen al cargar la página
+        // Iniciar fondo de corazones y elementos flotantes
         createHeartBackground();
 
-        // Generar corazones y flores flotantes de forma continua
         const symbols = ["💖", "💘", "💝", "🌸", "💕"];
         setInterval(() => {
             const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
             createFloatingElement(randomSymbol);
         }, 1200);
 
-        // Notas de amor que aparecerán aleatoriamente
+        // Notas de amor flotantes
         const notes = [
             "Te amo más de lo que mis palabras pueden expresar. 💗",
             "Cada momento contigo es un regalo. 🎁",
             "Mi corazón es tuyo, siempre. 💘",
             "Eres el amor de mi vida. 💕",
             "Nuestro amor es eterno. ✨",
-            "No hay día que no piense en ti 💞",
-            "Gracias por hacer mi vida más hermosa 🌹",
-            "Juntos, para siempre 💑"
+            "No hay día que no piense en ti. 💞",
+            "Gracias por hacer mi vida más hermosa. 🌹",
+            "Juntos, para siempre. 💑"
         ];
 
         let noteIndex = 0;
@@ -273,10 +252,11 @@
                 createFloatingNote(notes[(noteIndex + 1) % notes.length], "right");
                 noteIndex = (noteIndex + 2) % notes.length;
             }
-        }, 3000); // Aparecen dos nuevas notas cada 3 segundos en zonas separadas
+        }, 3000);
+
     </script>
+
 </body>
 </html>
-
 
 
