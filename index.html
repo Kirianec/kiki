@@ -137,6 +137,14 @@
 
         /* Ajustes para dispositivos móviles */
         @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
             .photo {
                 width: 80px;
                 height: 80px;
@@ -145,6 +153,23 @@
             .note {
                 font-size: 1em;
                 padding: 8px 16px;
+            }
+
+            /* Reajustar las posiciones de las imágenes */
+            .photo:nth-child(1) {
+                top: 5%;
+                left: 10%;
+            }
+
+            .photo:nth-child(2) {
+                top: 20%;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .photo:nth-child(3) {
+                top: 70%;
+                left: 15%;
             }
         }
 
@@ -167,9 +192,9 @@
     <a href="carta.html" class="button">¡Sí, claro! 💘</a>
 
     <!-- Imágenes -->
-    <img src="https://i.imgur.com/yhUnAwr.jpg" class="photo" style="top: 2%; left: 13%;">  <!-- Imagen movida hacia la izquierda y más arriba -->
-    <img src="https://i.imgur.com/g3ATYh3.jpg" class="photo" style="top: 10%; right: 17%;"> <!-- Imagen movida aún más hacia la derecha -->
-    <img src="https://i.imgur.com/2FRejXM.jpg" class="photo" style="top: 80%; right: 9%;"> <!-- Imagen movida más abajo y a la derecha -->
+    <img src="https://i.imgur.com/yhUnAwr.jpg" class="photo" style="top: 5%; left: 10%;">  <!-- Imagen ajustada -->
+    <img src="https://i.imgur.com/g3ATYh3.jpg" class="photo" style="top: 20%; left: 50%; transform: translateX(-50%);"> <!-- Imagen centrada -->
+    <img src="https://i.imgur.com/2FRejXM.jpg" class="photo" style="top: 70%; left: 15%;"> <!-- Imagen ajustada abajo -->
 
     <script>
         /* Funciones para generar elementos flotantes */
@@ -258,6 +283,7 @@
 
 </body>
 </html>
+
 
 
 
