@@ -16,34 +16,39 @@
             overflow: hidden;
         }
 
-        /* Ajustes para iPhone */
+        .heart-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff0066" fill-opacity="0.3"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center center;
+            background-size: contain;
+            opacity: 0.6;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100%) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
         @media only screen and (max-width: 600px) {
-            h1 {
-                font-size: 2em;
-            }
-            p {
-                font-size: 1em;
-                margin-bottom: 20px;
-            }
-            .photo {
-                width: 70px;
-                height: 70px;
-                border-radius: 8px;
-                opacity: 0.85;
-                position: absolute;
-            }
+            h1 { font-size: 2em; }
+            p { font-size: 1em; margin-bottom: 20px; }
+            .photo { width: 70px; height: 70px; border-radius: 8px; opacity: 0.85; position: absolute; }
             .photo:nth-child(1) { top: 10%; left: 5%; }
             .photo:nth-child(2) { top: 40%; right: 5%; }
             .photo:nth-child(3) { bottom: 10%; left: 40%; }
-            .button {
-                display: block;
-                margin: 20px auto;
-                padding: 12px 24px;
-                font-size: 1em;
-                border-radius: 8px;
-                text-align: center;
-                z-index: 20;
-            }
+            .button { display: block; margin: 20px auto; padding: 12px 24px; font-size: 1em; border-radius: 8px; text-align: center; z-index: 20; }
         }
 
         .button {
@@ -64,32 +69,11 @@
             background-color: #ff3399;
             transform: scale(1.05);
         }
-
-        /* Notas dirigidas al centro */
-        .note {
-            position: absolute;
-            background-color: #fff7f7;
-            color: #ff0066;
-            font-size: 1.2em;
-            padding: 10px 20px;
-            border-radius: 8px;
-            border: 1px solid #ff0066;
-            box-shadow: 2px 2px 5px rgba(255, 0, 102, 0.5);
-            opacity: 0;
-            animation: floatNote 5s linear forwards;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        @keyframes floatNote {
-            0% { top: 100vh; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { top: 20vh; opacity: 0; }
-        }
     </style>
 </head>
 <body>
+    <div class="heart-background" id="heart-background"></div>
+    
     <h1>¡Hola, mi princesa! 💖</h1>
     <p>Quiero preguntarte algo especial...</p>
     <p>¿Quieres ser mi San Valentín este 14 de febrero y por todos los que sigan durante muchos años? 💕</p>
@@ -100,26 +84,23 @@
     <img src="https://i.imgur.com/2FRejXM.jpg" class="photo">
 
     <script>
-        function createFloatingNote(text) {
-            const note = document.createElement("div");
-            note.classList.add("note");
-            note.innerHTML = text;
-            document.body.appendChild(note);
-            setTimeout(() => { note.remove(); }, 5000);
+        function createHeartBackground() {
+            const background = document.getElementById('heart-background');
+            const heartCount = 50;
+
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.width = (Math.random() * 30 + 10) + 'px';
+                heart.style.height = heart.style.width;
+                heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                heart.style.animationDelay = Math.random() * -10 + 's';
+                background.appendChild(heart);
+            }
         }
 
-        const notes = [
-            "Te amo más de lo que mis palabras pueden expresar. 💗",
-            "Cada momento contigo es un regalo. 🎁",
-            "Mi corazón es tuyo, siempre. 💘",
-            "Eres el amor de mi vida. 💕"
-        ];
-
-        setInterval(() => {
-            const randomNote = notes[Math.floor(Math.random() * notes.length)];
-            createFloatingNote(randomNote);
-        }, 3000);
+        createHeartBackground();
     </script>
 </body>
 </html>
-
